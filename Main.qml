@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Window {
+    id: mainWindow
     width: 400
     height: 600
     visible: true
@@ -73,7 +74,8 @@ Window {
         }
 
         TodoList {
-
+            width: parent.width
+            height: 400
         }
 
     }

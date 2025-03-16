@@ -27,7 +27,8 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 
     Q_INVOKABLE void addItem(const QString& text);
-    Q_INVOKABLE void setCompleted(const int& index, const bool& value);
+    Q_INVOKABLE bool setCompleted(const int& index, const bool& value);
+    Q_INVOKABLE bool removeItem(const int& index);
 
 private:
     QVector<TodoItem> m_items;

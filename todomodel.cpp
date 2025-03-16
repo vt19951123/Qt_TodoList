@@ -42,21 +42,27 @@ QHash<int, QByteArray> TodoModel::roleNames() const
 
 bool TodoModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    bool ret = false;
+
     if (!index.isValid() || (index.row() < 0 || index.row() >= m_items.size()) )
         return false;
 
-    TodoModel& item = m_items[index.row()];
+    TodoItem& item = m_items[index.row()];
 
     switch(role) {
     case TEXT_ROLE:
-        // m_items[index.row()].text = value;
+        item.text = value.toString();
         break;
     case COMPLETE_ROLE:
-
+        item.completed = value.toBool();
         break;
     default:
         return false;
     }
+
+    emit dataChanged(index, index, {role});
+
+    return true;
 }
 
 void TodoModel::addItem(const QString &text)
@@ -69,7 +75,25 @@ void TodoModel::addItem(const QString &text)
 
 }
 
-void TodoModel::setCompleted(const int &index, const bool &value)
+bool TodoModel::setCompleted(const int &index, const bool &value)
 {
+    if (index < 0 || index >= m_items.size()) return false;
 
+    QModelIndex modelIndex = createIndex(index, 0);
+    this->setData(modelIndex, !value, COMPLETE_ROLE);
+
+    return true;
+}
+
+bool TodoModel::removeItem(const int &index)
+{
+    if (index < 0 || index >= m_items.size()) return false;
+
+    beginRemoveRows(QModelIndex(), m_items.size(), m_items.size());
+
+    m_items.removeAt(index);
+
+    endRemoveRows();
+
+    return true;
 }

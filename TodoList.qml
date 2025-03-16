@@ -2,9 +2,6 @@ import QtQuick
 
 Item {
 
-    width: parent.width
-    height: 400
-
     Rectangle {
         width: parent.width
         height: parent.height
@@ -22,6 +19,10 @@ Item {
 
                 onTaskCompleted: {
                     TodoModel.setCompleted(index, model.completed)
+                }
+
+                onRemoveTask: {
+                    TodoModel.removeItem(index)
                 }
             }
         }
