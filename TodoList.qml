@@ -9,11 +9,11 @@ Item {
         border.color: "gray"
 
         ListView {
+            id: listviewId
             anchors.fill: parent
             model: TodoModel
             delegate: TodoItem {
-                width: parent.width
-                height: 40
+                width: listviewId.width
                 context: model.text
                 completed: model.completed
 

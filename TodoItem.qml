@@ -3,6 +3,7 @@ import QtQuick.Controls
 
 Item {
 
+    height: itemText.height > 40 ? itemText.height : 40
     property string context: ""
     property bool completed: false
 
@@ -18,20 +19,25 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 5
             anchors.verticalCenter: parent.verticalCenter
-            checked: completed
+            Component.onCompleted: {
+                checkBoxId.checked = completed
+            }
 
-            onCheckedChanged: {
+            onClicked: {
                 taskCompleted()
             }
         }
 
         Text {
+            id: itemText
+            width: 300
             anchors.left: checkBoxId.right
             anchors.leftMargin: 5
             anchors.verticalCenter: parent.verticalCenter
             text: qsTr(context)
-            verticalAlignment: Text.AlignVCenter
             font.strikeout: completed
+            verticalAlignment: Text.AlignVCenter
+            wrapMode: Text.Wrap
         }
 
         Rectangle {

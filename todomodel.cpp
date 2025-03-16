@@ -89,11 +89,13 @@ bool TodoModel::removeItem(const int &index)
 {
     if (index < 0 || index >= m_items.size()) return false;
 
-    beginRemoveRows(QModelIndex(), m_items.size(), m_items.size());
+    beginRemoveRows(QModelIndex(), index, index);
 
     m_items.removeAt(index);
 
     endRemoveRows();
+
+    emit layoutChanged();
 
     return true;
 }
