@@ -11,6 +11,7 @@ Item {
         ListView {
             id: listviewId
             anchors.fill: parent
+            clip: true
             model: TodoModel
             delegate: TodoItem {
                 width: listviewId.width

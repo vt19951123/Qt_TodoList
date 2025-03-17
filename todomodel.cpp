@@ -99,3 +99,12 @@ bool TodoModel::removeItem(const int &index)
 
     return true;
 }
+
+void TodoModel::removeAllCompleted()
+{
+    for (int i = m_items.size() - 1; i >= 0; --i) {
+        if (m_items[i].completed) {
+            removeItem(i);
+        }
+    }
+}

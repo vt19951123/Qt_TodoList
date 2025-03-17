@@ -29,6 +29,7 @@ public:
     Q_INVOKABLE void addItem(const QString& text);
     Q_INVOKABLE bool setCompleted(const int& index, const bool& value);
     Q_INVOKABLE bool removeItem(const int& index);
+    Q_INVOKABLE void removeAllCompleted();
 
 private:
     QVector<TodoItem> m_items;

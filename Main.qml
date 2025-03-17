@@ -51,7 +51,7 @@ Window {
                     id: addButton
                     width: 70
                     height: recField.height
-                    color: "gray"
+                    color: "lightgray"
 
                     Text {
                         anchors.fill: parent
@@ -76,6 +76,29 @@ Window {
         TodoList {
             width: parent.width
             height: 400
+        }
+
+        Rectangle {
+            id: removeCompleted
+            width: 100
+            height: 50
+            anchors.horizontalCenter: parent.horizontalCenter
+            color: "lightgray"
+            Text {
+                anchors.fill: parent
+                text: qsTr("Delete All Completed Task")
+                color: "black"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.Wrap
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onReleased: {
+                    TodoModel.removeAllCompleted()
+                }
+            }
         }
 
     }
