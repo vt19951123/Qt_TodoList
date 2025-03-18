@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Basic
 
 Item {
 
@@ -32,7 +33,27 @@ Item {
                 NumberAnimation { properties: "x,y"; duration: 200; easing.type: Easing.OutQuad }
             }
 
-            ScrollBar.vertical: ScrollBar { }
+            ScrollBar.vertical: ScrollBar {
+                id: scrollBar
+                padding: 0
+                policy: ScrollBar.AsNeeded
+                width: 6
+                implicitWidth: 6
+                minimumSize: 0.1
+
+                contentItem: Rectangle {
+                    implicitWidth: 6
+                    implicitHeight: 100
+                    radius: 2
+                    color: scrollBar.pressed ? "#808080" : "#a0a0a0"
+                    opacity: scrollBar.active ? 1 : 0
+                }
+
+                background: Rectangle {
+                    implicitWidth: 6
+                    color: "transparent"
+                }
+            }
 
             model: TodoModel
             delegate: TodoItem {
@@ -49,6 +70,7 @@ Item {
                 }
             }
         }
+
     }
 
 
