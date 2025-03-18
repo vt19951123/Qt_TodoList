@@ -95,7 +95,7 @@ bool TodoModel::removeItem(const int &index)
 
     endRemoveRows();
 
-    emit layoutChanged();
+    // emit layoutChanged();
 
     return true;
 }
