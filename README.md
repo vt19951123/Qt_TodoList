@@ -13,7 +13,7 @@ A simple, yet functional ToDo List application built with Qt Quick and C++.
 
 ## Screenshots
 
-![Screenshot]screenshots/Screenshot.png
+![Screenshot](screenshots/Screenshot.png)
 
 ## Requirements
 
@@ -65,13 +65,6 @@ cmake --build .
 - Click the "✕" button to remove an individual task
 - Click "Delete All Completed Task" to remove all completed tasks at once
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-*Add your license information here*
 
 ## Acknowledgements
 
